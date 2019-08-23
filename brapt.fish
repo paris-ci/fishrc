@@ -11,17 +11,18 @@ function brapt --argument-names action package_name --description "Useful compat
 		_debug Package manager set to apt
 	end
 
-	if test $action = "install"
+	switch $action
+	case install
 		_debug Installing $package_name
 		eval $package_manager install $package_name
-	else if test $action = "ensure"
+	case ensure
 		_debug Ensuring $package_name
 		which -s $package_name
 		if test $status -ne 0
 			_debug Need installing $package_name
 			brapt install $package_name
 		end
-	else
+	case "*"
 		echo Invalid action $action :\(
 		return 1
 	end
