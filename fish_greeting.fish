@@ -1,3 +1,4 @@
 function fish_greeting
-    echo -e 'test (uname) test'
+    toilet --filter border:crop:metal --termwidth Bienvenue
+    neofetch
 end
